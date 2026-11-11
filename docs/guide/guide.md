@@ -1,16 +1,16 @@
 <!-- Generated from docs/guide/index.html (the interactive version) by docs/guide/convert.py. Edit index.html and run: python docs/guide/convert.py -->
 
-<sub>FoodRec v0.3 · complete guide</sub>
+<sub>ReciReflect v0.3 · complete guide</sub>
 
-# FoodRec: how it works, how it learns, and the math
+# ReciReflect: how it works, how it learns, and the math
 
-FoodRec recommends five recipes from 9,605 real HUMMUS recipes. A fixed formula ranks them; two small models learn from what the user does; an AI supervisor watches the gap between what the user says and what they do, and asks before anything changes. This guide covers the system (Part I), the user model (Part II) and every equation (Part III).
+ReciReflect recommends five recipes from 9,605 real HUMMUS recipes. A fixed formula ranks them; two small models learn from what the user does; an AI supervisor watches the gap between what the user says and what they do, and asks before anything changes. This guide covers the system (Part I), the user model (Part II) and every equation (Part III).
 
 *Colours in the figures:* agent and decision logic · language model (Qwen) · stored data · deterministic code
 
 ## Contents
 
-- [Part I · How FoodRec works](#p1)
+- [Part I · How ReciReflect works](#p1)
    - [Who talks to whom](#components)
    - [From HUMMUS to the database](#data)
    - [Getting five recipes](#ranking-flow)
@@ -37,7 +37,7 @@ FoodRec recommends five recipes from 9,605 real HUMMUS recipes. A fixed formula 
 
 <a name="p1"></a>
 
-## Part I · How FoodRec works
+## Part I · How ReciReflect works
 
 *Components, data, ranking, the learning loop, the assistant and storage.*
 
@@ -49,7 +49,7 @@ FoodRec recommends five recipes from 9,605 real HUMMUS recipes. A fixed formula 
 
 The browser talks to one API. Chat goes to the supervisor agent; clicks and saved goals go to the app service. The service is the only part that writes. It appends an event to SQLite, and the user model and the knowledge graph are rebuilt from those events.
 
-![FoodRec components and how they talk](figures/figure-1.svg)
+![ReciReflect components and how they talk](figures/figure-1.svg)
 
 *The language model only reads the message and words the answer. Ranking, the policy and every number come from deterministic code that reads the same database.*
 
@@ -338,7 +338,7 @@ arithmetic as the app (multiplicative update, +0.2 nudge for a consistent reason
 | 8 | 5 % | 12 % | 83 % | 37 % | 62 % | proposes moving convenience to 52 % |
 
 > The interactive version, where you can choose and reject dishes yourself, is in the HTML guide:
-> open `docs/guide/index.html` in a browser, or **How FoodRec works** in the app's account menu.
+> open `docs/guide/index.html` in a browser, or **How ReciReflect works** in the app's account menu.
 
 <a name="interactions"></a>
 
@@ -392,7 +392,7 @@ Confidence = n / (n + 5), where n counts choices, reasoned rejections and answer
 
 <a name="notation"></a>
 
-<sub>FoodRec v0.3 · Part III · model equations</sub>
+<sub>ReciReflect v0.3 · Part III · model equations</sub>
 
 # Every equation, explained
 
@@ -1125,6 +1125,6 @@ The user model is never edited directly. Every action is stored in an append-onl
 
 All values are exposed at `GET /api/system`. The supervisor's thresholds can be set on the Config page. They are design choices for a transparent demo and should be calibrated with simulated or real users before an evaluation.
 
-Part III of the FoodRec Complete Guide, written from the code on branch `three-criteria-hummus` (FoodRec 0.3.0).
+Part III of the ReciReflect Complete Guide, written from the code on branch `three-criteria-hummus` (ReciReflect 0.3.0).
 
-Written from the code on branch `three-criteria-hummus` (FoodRec 0.3.0). Parameters are design choices that still need calibration with users.
+Written from the code on branch `three-criteria-hummus` (ReciReflect 0.3.0). Parameters are design choices that still need calibration with users.

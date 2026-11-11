@@ -1,6 +1,6 @@
 # /etc/systemd/system/foodrec-demo.service
 [Unit]
-Description=FoodRec public demo
+Description=ReciReflect public demo
 After=network-online.target ollama.service
 Wants=network-online.target
 

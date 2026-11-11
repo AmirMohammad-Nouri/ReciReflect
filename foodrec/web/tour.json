@@ -2,8 +2,8 @@
   "$comment": "The guided tours (tour.js): 'user' for participants, 'admin' for administrators. A step is centred, or points at 'target' (a CSS selector) on 'page' (#/<page>); it is skipped if that element is not on screen, as for a role without the feature. 'click': selectors to click first, in order. 'open': 'dock' opens the assistant. Filters: 'demo' (only on a demo server, or only elsewhere), 'cycle' (meal cycles on or off), 'feature' (roles with that feature), 'needs_people' (only if Monitor has someone to show).",
   "user": [
     {
-      "title": "Welcome to FoodRec",
-      "text": "FoodRec suggests recipes ranked by what matters to you, and shows exactly why. This tour goes through each part of the app, one step at a time. Use Next to follow it, or Skip to explore on your own."
+      "title": "Welcome to ReciReflect",
+      "text": "ReciReflect suggests recipes ranked by what matters to you, and shows exactly why. This tour goes through each part of the app, one step at a time. Use Next to follow it, or Skip to explore on your own."
     },
     {
       "page": "discover",
@@ -29,7 +29,7 @@
       "page": "discover",
       "target": "article.recipe .nutri",
       "title": "Health grade",
-      "text": "A to E, where A is the healthiest. FoodRec works it out from the dish's nutrition. It is similar to a Nutri-Score, but it is not the official one.",
+      "text": "A to E, where A is the healthiest. ReciReflect works it out from the dish's nutrition. It is similar to a Nutri-Score, but it is not the official one.",
       "feature": "food_details"
     },
     {
@@ -114,7 +114,7 @@
       "page": "discover",
       "target": ".user-btn",
       "title": "Your account",
-      "text": "This menu has My dishes (saved, liked and cooked), this tour, and the full guide to how FoodRec works."
+      "text": "This menu has My dishes (saved, liked and cooked), this tour, and the full guide to how ReciReflect works."
     },
     {
       "page": "discover",
@@ -131,7 +131,7 @@
   "admin": [
     {
       "title": "Welcome, administrator",
-      "text": "This side of FoodRec is for running a study. It has two pages: Monitor to follow what people do, and Config to set everything up. There are no recipes or preferences here, because those belong to participants."
+      "text": "This side of ReciReflect is for running a study. It has two pages: Monitor to follow what people do, and Config to set everything up. There are no recipes or preferences here, because those belong to participants."
     },
     {
       "page": "monitor",
@@ -250,7 +250,7 @@
       "page": "config/settings",
       "target": ".change",
       "title": "Read-only in the demo",
-      "text": "You can look at every setting and try things in the page, but the demo's file does not change. To configure FoodRec, clone the project and run it on your computer.",
+      "text": "You can look at every setting and try things in the page, but the demo's file does not change. To configure ReciReflect, clone the project and run it on your computer.",
       "demo": true
     },
     {

@@ -13,7 +13,7 @@ from .build import build
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Build the FoodRec catalogue from the HUMMUS spreadsheet.")
+    ap = argparse.ArgumentParser(description="Build the ReciReflect catalogue from the HUMMUS spreadsheet.")
     ap.add_argument("--xlsx", default=str(ROOT / "data" / "hummus" / "hummus_recipes.xlsx"),
                     help="HUMMUS-layout spreadsheet (.xlsx, .csv or a JSON list of rows)")
     ap.add_argument("--recipes", default=None, help="your own recipes in the simple JSON format (ingest/simple.py)")

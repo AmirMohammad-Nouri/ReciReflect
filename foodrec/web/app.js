@@ -87,7 +87,7 @@ function userMenu(anchor) {
     can("page_dishes") ? item("bookmark", "My dishes", "Saved for later, liked and cooked",
       { onclick: () => { close(); location.hash = "#/dishes"; } }) : null,
     item("spark", "Show the tour", "A short walk through the app", { onclick: () => { close(); startTour(); } }),
-    item("info", "How FoodRec works", "The complete guide: concepts and every equation", { href: "/guide", target: "_blank", rel: "noopener" }),
+    item("info", "How ReciReflect works", "The complete guide: concepts and every equation", { href: "/guide", target: "_blank", rel: "noopener" }),
   ].filter(Boolean);
   let account = null;
   let input = null;
@@ -136,11 +136,11 @@ const joinedByLink = () => !!state.user && safeGet("foodrec.joined") === state.u
 function demoBanner() {
   const b = h("div.demo-banner", h("b", "Demo"), joinedByLink()
     ? " · you joined with a personal link (to leave it, use the account menu, top right) · data is reset regularly"
-    : " · you see the app as a user (switch in the account menu, top right) · data is reset regularly · to use FoodRec for real, clone the project and run it on your computer");
+    : " · you see the app as a user (switch in the account menu, top right) · data is reset regularly · to use ReciReflect for real, clone the project and run it on your computer");
   document.querySelector(".topbar").after(b);
 }
 
-// The first thing a demo visitor sees: which side of FoodRec to look at. Asked once per browser.
+// The first thing a demo visitor sees: which side of ReciReflect to look at. Asked once per browser.
 function chooseView() {
   document.querySelector(".topbar").classList.add("topbar-plain");
   return new Promise((resolve) => {
@@ -154,8 +154,8 @@ function chooseView() {
       h("span.view-icon", icon(ic)), h("h2", title), h("p", text),
       h("ul", points.map((t) => h("li", t))), h("span.btn.primary", `Continue as ${view === "admin" ? "administrator" : "user"}`));
     clear(main, h("div.view-choice",
-      h("h1", "How do you want to see FoodRec?"),
-      h("p.muted", "FoodRec recommends recipes and shows exactly why. Pick a side to try. You can switch later in the account menu, top right."),
+      h("h1", "How do you want to see ReciReflect?"),
+      h("p.muted", "ReciReflect recommends recipes and shows exactly why. Pick a side to try. You can switch later in the account menu, top right."),
       h("div.view-options",
         option("user", "bowl", "User", "Get food recommendations, the way a study participant does.",
           ["Set your preferences and values", "React to dishes, meal by meal", "Ask the assistant why a dish was suggested"]),
@@ -275,7 +275,7 @@ async function boot() {
   if (state.user_state.access?.features?.configure) return location.replace(ADMIN_PAGE);
   renderStatus();
   document.querySelector(".user-btn").title = "Account";
-  if (state.system.study?.name) document.title = `${state.system.study.name} · FoodRec`;
+  if (state.system.study?.name) document.title = `${state.system.study.name} · ReciReflect`;
   // The dock waits for onboarding: a study may assign a role without the assistant at that point.
   const dockToggle = document.querySelector(".dock-toggle");
   const startDock = () => {

@@ -167,7 +167,7 @@ def raw_values(recipe):
 
 
 def health_grade(score):
-    """A-E letter for a healthiness score (FoodRec's own banding, not Nutri-Score)."""
+    """A-E letter for a healthiness score (ReciReflect's own banding, not Nutri-Score)."""
     if score is None:
         return None
     return "A" if score >= 0.8 else "B" if score >= 0.65 else "C" if score >= 0.5 else "D" if score >= 0.35 else "E"

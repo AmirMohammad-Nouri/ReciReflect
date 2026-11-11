@@ -8,7 +8,7 @@ energy 125 to 400 kcal (WCRF energy-density bands); total fat 3 to 17.5 g, satur
 Healthiness = sum(weight x factor score) / sum(weight). The weights come from the health goal chosen at onboarding. Eat healthier weighs all nine factors equally. Lose weight puts more weight on energy, fat, sugars and fibre. Build muscle puts most weight on protein. Heart-friendly eating stresses saturated fat, sodium, cholesterol and fibre. Cut down on sugar stresses sugars. Gain weight reverses the energy factor so energy-dense dishes score higher. Changing the goal changes the weights, never the data.
 
 ## Grade
-The A to E health grade is FoodRec's own banding of the score (A from 0.8, B from 0.65, C from 0.5, D from 0.35); it is not the official Nutri-Score. Missing nutrients are left out and the remaining weights rescaled; the breakdown lists them.
+The A to E health grade is ReciReflect's own banding of the score (A from 0.8, B from 0.65, C from 0.5, D from 0.35); it is not the official Nutri-Score. Missing nutrients are left out and the remaining weights rescaled; the breakdown lists them.
 
 ## Not advice
 Healthiness is an operational ranking measure, not medical or dietetic advice.

@@ -1,6 +1,6 @@
 # /etc/systemd/system/foodrec-demo-reset.service - wipes the demo data (run by the timer)
 [Unit]
-Description=Reset the FoodRec demo data
+Description=Reset the ReciReflect demo data
 
 [Service]
 Type=oneshot

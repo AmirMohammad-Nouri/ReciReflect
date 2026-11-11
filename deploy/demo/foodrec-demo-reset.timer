@@ -1,6 +1,6 @@
 # /etc/systemd/system/foodrec-demo-reset.timer - every night at 04:00
 [Unit]
-Description=Reset the FoodRec demo every night
+Description=Reset the ReciReflect demo every night
 
 [Timer]
 OnCalendar=*-*-* 04:00:00

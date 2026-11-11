@@ -249,9 +249,9 @@ export function menu(anchor, items) {
 }
 
 // The health grade as a row of A to E with the dish's own letter bold and bigger. It looks like a
-// nutrition label on purpose, but it is FoodRec's own banding, not the official Nutri-Score.
+// nutrition label on purpose, but it is ReciReflect's own banding, not the official Nutri-Score.
 export function grade(g) {
-  const title = g ? `Health grade ${g}: FoodRec's banding of the healthiness score, not the official Nutri-Score` : "Health grade unknown";
+  const title = g ? `Health grade ${g}: ReciReflect's banding of the healthiness score, not the official Nutri-Score` : "Health grade unknown";
   return h("span.nutri", { title, "aria-label": title, role: "img" },
     ["A", "B", "C", "D", "E"].map((x) => h("span.nutri-l." + x + (x === g ? ".on" : ""), x)));
 }

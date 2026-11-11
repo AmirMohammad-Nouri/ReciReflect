@@ -1,6 +1,6 @@
 # The user model, in plain language
 
-This page explains what FoodRec knows about a user, where each number comes from, and how it
+This page explains what ReciReflect knows about a user, where each number comes from, and how it
 changes. It is written so the whole flow can be explained on one whiteboard. Every number in it
 can be recomputed by replaying the user's event log (`learner.py`), so nothing is hidden state.
 
@@ -39,7 +39,7 @@ that avoids five near-identical dishes.
 
 ### Taste model: "do they like this kind of food?"
 
-For every concept (a cuisine, an ingredient, a food group) FoodRec counts likes and dislikes:
+For every concept (a cuisine, an ingredient, a food group) ReciReflect counts likes and dislikes:
 
 ```
 taste(concept) = (1 + likes) / (2 + likes + dislikes)        0.5 = no opinion yet
