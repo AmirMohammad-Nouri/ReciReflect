@@ -399,7 +399,7 @@ SIM_MD = "\n".join([
     *simulate(),
     "",
     "> The interactive version, where you can choose and reject dishes yourself, is in the HTML guide:",
-    "> open `docs/guide/index.html` in a browser, or **How FoodRec works** in the app's account menu.",
+    "> open `docs/guide/index.html` in a browser, or **How ReciReflect works** in the app's account menu.",
     "",
 ])
 

@@ -40,7 +40,7 @@ function card(title, guide, ...kids) {
 // ---- restart: wait for the new process, then reload -----------------------------------------
 async function waitForRestart(oldBoot) {
   const msg = h("p.muted", "The new process is starting (loading the catalogue can take a few seconds).");
-  const overlay = h("div.overlay", h("div.modal", h("div.modal-body.stack", h("div.row", h("span.spinner"), h("b", "Restarting FoodRec with the new settings…")), msg)));
+  const overlay = h("div.overlay", h("div.modal", h("div.modal-body.stack", h("div.row", h("span.spinner"), h("b", "Restarting ReciReflect with the new settings…")), msg)));
   document.body.append(overlay);
   const t0 = Date.now();
   for (;;) {
@@ -49,7 +49,7 @@ async function waitForRestart(oldBoot) {
       const res = await fetch("/api/system");
       if (res.ok && (await res.json()).boot_id !== oldBoot) { location.reload(); return; }
     } catch { /* still restarting */ }
-    if (Date.now() - t0 > 120000) { clear(msg, "This takes longer than expected. Check the terminal where FoodRec runs."); }
+    if (Date.now() - t0 > 120000) { clear(msg, "This takes longer than expected. Check the terminal where ReciReflect runs."); }
   }
 }
 
@@ -120,7 +120,7 @@ export function configView() {
         } catch (err) { msg.textContent = err.message; }
       } }, user, pw, msg, h("button.btn.primary", { type: "submit" }, "Sign in")),
       h("details", h("summary.small.muted", "Other ways in"),
-        h("p.small", "On the computer that runs FoodRec, ", h("span.mono", "foodrec config open"), " opens this page already signed in. Or enter FOODREC_ADMIN_TOKEN (kept for this browser tab only):"),
+        h("p.small", "On the computer that runs ReciReflect, ", h("span.mono", "foodrec config open"), " opens this page already signed in. Or enter FOODREC_ADMIN_TOKEN (kept for this browser tab only):"),
         h("div.row", tok, h("button.btn.sm", { onclick: () => { sessionSet("foodrec.admin_token", tok.value.trim()); load(); } }, "Continue"))))));
     user.focus();
   }
@@ -175,7 +175,7 @@ export function configView() {
         view.exists ? "" : " (not created yet: saving creates it)",
         view.auto_reload ? " · edits to the file (here or by hand) are applied automatically" : " · automatic reload is off",
         view.admin_token ? " · protected by an admin token" : ""),
-      view.read_only ? h("div.change", h("b", "Demo: "), "this is the Config page as an administrator sees it. You can look at every setting, open the guides and try things, but nothing in the file changes here. The only exceptions are the settings under \"Try these yourself\" and the links you create: they count for your visit only, and you see their effect in the user view. To configure FoodRec, clone the project and run it on your computer.") : null,
+      view.read_only ? h("div.change", h("b", "Demo: "), "this is the Config page as an administrator sees it. You can look at every setting, open the guides and try things, but nothing in the file changes here. The only exceptions are the settings under \"Try these yourself\" and the links you create: they count for your visit only, and you see their effect in the user view. To configure ReciReflect, clone the project and run it on your computer.") : null,
       view.config_problem ? h("div.change.bad", h("b", "The file on disk was not applied: "), view.config_problem,
         h("div.small", "The app keeps running with the last valid configuration until the file is fixed.")) : null,
       pending.length && !view.read_only ? h("div.change", h("b", "Waiting for a restart: "), pending.map((p) => `${p.label} (running ${p.running}, saved ${p.saved})`).join("; "),

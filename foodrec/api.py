@@ -98,7 +98,7 @@ def create_app(settings=None, llm=None):
     settings = settings or load_settings()
     core = App(settings, llm=llm)
     sup = Supervisor(core)
-    api = FastAPI(title="FoodRec", version=foodrec.__version__)
+    api = FastAPI(title="ReciReflect", version=foodrec.__version__)
     api.state.core, api.state.supervisor = core, sup
 
     @api.exception_handler(ValueError)
@@ -847,7 +847,7 @@ def main(host=None, port=None, open_page=None):
 
 
 ADMIN_PASSWORD_HELP = """
-FoodRec needs an administrator password before it starts (server.mode is "local").
+ReciReflect needs an administrator password before it starts (server.mode is "local").
 Set it once, either with
     foodrec admin password
 or by writing it in {path}:

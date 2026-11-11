@@ -1,6 +1,6 @@
 # Configuration, access roles, export and scenarios
 
-Everything that controls how FoodRec runs lives in one JSON file, **`foodrec.config.json`** in the
+Everything that controls how ReciReflect runs lives in one JSON file, **`foodrec.config.json`** in the
 repository root: the language model, the dataset, the criteria users weigh, the feedback options,
 access roles and the study population. The **Config page** (part of the administrator's page, `/config`, separate from the app)
 edits the same file, and every setting on the page is a key in the file. Use another file with
@@ -30,7 +30,7 @@ The running app also restarts itself when its own Python code changes (after an 
 server never stays older than the web pages; a change that does not compile is not used. `foodrec stop`
 also finds servers started by older versions.
 
-Only one FoodRec runs per port. If one is already running, `foodrec` and `foodrec config open` just open
+Only one ReciReflect runs per port. If one is already running, `foodrec` and `foodrec config open` just open
 the browser, and `foodrec serve` says so instead of starting a second copy (a second copy could not use
 the port, and would find the embedded vector store locked). If another program uses the port, the command
 says so before loading anything; pick another port with `--port` or `server.port`. All commands accept

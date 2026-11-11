@@ -64,7 +64,7 @@ function accountMenu(anchor) {
       h("button.btn.sm", { onclick: signOut }, "Sign out")];
   const pop = h("div.menu.account-menu", { style: { padding: "10px", width: "260px" } },
     item("spark", "Show the tour", "A walk through Monitor and Config", { onclick: () => { close(); startTour({ side: "admin" }); } }),
-    item("info", "How FoodRec works", "The complete guide: concepts and every equation", { href: "/guide", target: "_blank", rel: "noopener" }),
+    item("info", "How ReciReflect works", "The complete guide: concepts and every equation", { href: "/guide", target: "_blank", rel: "noopener" }),
     h("div.divider", { style: { margin: "8px 0" } }), account);
   document.body.append(pop);
   const r = anchor.getBoundingClientRect();
@@ -111,7 +111,7 @@ try {
     pages.monitor = monitorView();
     clear(main, pages.monitor, pages.config);
     if (demo) document.querySelector(".topbar").after(h("div.demo-banner", h("b", "Demo"),
-      " · you see the app as the administrator (switch in the account menu, top right) · to use FoodRec for real, clone the project and run it on your computer"));
+      " · you see the app as the administrator (switch in the account menu, top right) · to use ReciReflect for real, clone the project and run it on your computer"));
     userBtn.querySelector(".uid").textContent = demo ? "Admin view" : signedIn ? state.user : "Administrator";
     userBtn.addEventListener("click", (e) => { e.stopPropagation(); accountMenu(e.currentTarget); });
     window.addEventListener("hashchange", route);

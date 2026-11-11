@@ -1,6 +1,6 @@
-# Running and deploying FoodRec
+# Running and deploying ReciReflect
 
-FoodRec is one codebase with three modes (`server.mode` in the config file):
+ReciReflect is one codebase with three modes (`server.mode` in the config file):
 
 | Mode | Use | Who | Config page |
 |---|---|---|---|
@@ -15,8 +15,8 @@ The demo is not a different version: it is the same code started with `deploy/de
 ## 1. Your own copy (the normal way)
 
 ```bash
-git clone https://github.com/<owner>/agentic_recom_sys.git
-cd agentic_recom_sys
+git clone https://github.com/<owner>/ReciReflect.git
+cd ReciReflect
 python -m venv .venv && source .venv/bin/activate
 pip install -e .
 
@@ -72,7 +72,7 @@ and the data is wiped every night.
 ssh ubuntu@<floating-ip>
 sudo apt update && sudo apt install -y python3-venv git caddy
 sudo useradd --system --create-home --home-dir /opt/foodrec foodrec
-sudo -u foodrec git clone https://github.com/<owner>/agentic_recom_sys.git /opt/foodrec
+sudo -u foodrec git clone https://github.com/<owner>/ReciReflect.git /opt/foodrec
 cd /opt/foodrec
 sudo -u foodrec git checkout v0.5.0                    # a release tag: the demo runs a tested version
 sudo -u foodrec python3 -m venv venv
@@ -99,7 +99,7 @@ sudo cp deploy/demo/Caddyfile /etc/caddy/Caddyfile     # first replace the DNS n
 sudo systemctl reload caddy
 ```
 
-Open `https://<your-dns-name>`. First, visitors choose how to see FoodRec: **User** or **Administrator**. The
+Open `https://<your-dns-name>`. First, visitors choose how to see ReciReflect: **User** or **Administrator**. The
 browser remembers the choice, and the account menu (top right) switches later. A banner says it is a demo. Each
 side has its own **guided tour** with short, skippable hints. It starts by itself the first time someone is on
 that side, here and in your own copy (again from the account menu → Show the tour). Edit the hints in
@@ -143,4 +143,4 @@ sudo systemctl restart foodrec-demo
 | visitors reading each other's data | each browser has a random visitor id; requests for another id are refused; admin lists and exports only show the visitor's own data |
 | abuse | at most 20 new visitors per hour per address, 30 assistant messages per hour per visitor, and 20 generated populations of up to 50 links per hour per visitor |
 | data piling up | wiped every night by `foodrec-demo-reset.timer` |
-| eavesdropping | HTTPS through Caddy; FoodRec itself only listens on 127.0.0.1 |
+| eavesdropping | HTTPS through Caddy; ReciReflect itself only listens on 127.0.0.1 |

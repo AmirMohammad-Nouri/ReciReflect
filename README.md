@@ -1,12 +1,12 @@
-# FoodRec: transparent, agentic food recommendation
+# ReciReflect: transparent, agentic food recommendation
 
-FoodRec recommends recipes from the **HUMMUS** dataset (about 9,600 food.com recipes), ranked by
+ReciReflect recommends recipes from the **HUMMUS** dataset (about 9,600 food.com recipes), ranked by
 values each user controls (by default **healthiness, sustainability and convenience**) plus a learned
 share for taste. A **supervisor agent** watches the learning process: when what a user *says* they want
 and what they *do* drift apart, it looks up their history in a **knowledge graph** and asks a question or
 proposes a change, always with the evidence. Nothing about a user's goal changes until they accept.
 
-FoodRec is built for **research on transparent recommendation**: every score can be opened, every step
+ReciReflect is built for **research on transparent recommendation**: every score can be opened, every step
 of the agent is shown live, and a study administrator decides who sees what, creates participant
 accounts, and exports one standard record per user.
 
@@ -52,10 +52,10 @@ accounts, and exports one standard record per user.
 
 ## Detailed explanation of the model
 
-**[FoodRec: how it works, how it learns, and the math](docs/guide/guide.md)** explains the system in depth,
+**[ReciReflect: how it works, how it learns, and the math](docs/guide/guide.md)** explains the system in depth,
 with diagrams and worked examples:
 
-1. **How FoodRec works**: the components, from HUMMUS to the database, how five recipes are chosen, what one
+1. **How ReciReflect works**: the components, from HUMMUS to the database, how five recipes are chosen, what one
    click and one chat turn set off, and why nothing is lost.
 2. **The user and the user model**: onboarding, a session screen by screen, how taste and values are
    learned, what every interaction changes, and when the supervisor speaks up.
@@ -67,7 +67,7 @@ with diagrams and worked examples:
 * **On GitHub**: click the title above. It opens [`docs/guide/guide.md`](docs/guide/guide.md), which GitHub
   shows as a formatted page with the equations, tables and diagrams.
 * **The interactive version** (with a live simulator you can click through): in the app, account menu →
-  **How FoodRec works** (or `http://127.0.0.1:8000/guide`), or open `docs/guide/index.html` in a browser.
+  **How ReciReflect works** (or `http://127.0.0.1:8000/guide`), or open `docs/guide/index.html` in a browser.
 
 This README covers installation and use; the guide covers the concepts and the mathematics.
 
@@ -93,8 +93,8 @@ knowledge graph and vector index run inside the app.
 ### 1. Get the code
 
 ```bash
-git clone https://github.com/AmirMohammad-Nouri/agentic_recom_sys.git
-cd agentic_recom_sys
+git clone https://github.com/AmirMohammad-Nouri/ReciReflect.git
+cd ReciReflect
 ```
 
 ### 2. Create a virtual environment and install
@@ -111,7 +111,7 @@ Check it: `foodrec --help` lists the commands. Optionally run the tests: `python
 ### 3. Set the administrator password (required)
 
 > [!IMPORTANT]
-> FoodRec asks **everyone** to sign in. The repository ships one administrator account, `admin`,
+> ReciReflect asks **everyone** to sign in. The repository ships one administrator account, `admin`,
 > **without a password**, and the app refuses to start until you set one:
 >
 > ```bash
@@ -128,14 +128,14 @@ Check it: `foodrec --help` lists the commands. Optionally run the tests: `python
 > The administrator is the only account that sees **Config**. Run `foodrec admin password` again at any
 > time to change the password (this signs the administrator out everywhere).
 
-### 4. Start FoodRec
+### 4. Start ReciReflect
 
 ```bash
 foodrec
 ```
 
 The first start imports the recipe catalogue into a local database (a few seconds), then opens
-`http://127.0.0.1:8000` in your browser. FoodRec keeps running in this terminal; stop it with `Ctrl+C`,
+`http://127.0.0.1:8000` in your browser. ReciReflect keeps running in this terminal; stop it with `Ctrl+C`,
 or with `foodrec stop` from another terminal. Running `foodrec` again while it runs just opens the browser.
 
 ### 5. Sign in and set up your profile
@@ -160,7 +160,7 @@ That is a complete installation. The next sections are optional.
 |---|---|
 | **Discover** | The recipes ranked for you, and nothing else. Each card shows the health grade (A to E), the similarity score and, in plain words, why the dish was suggested. Choose a meal, react to dishes (Like, Save, *I'll cook this*, *Not for me* with a reason), and open *How it's scored* on any card. With [meal cycles](foodrec/web/guides/cycle.md) on, you go through the meals of each day and react to every dish. |
 | **Assistant** (right side, every page) | Ask in plain language: "something easy with lentils", "why is #2 first?", "compare #1 and #3", "what if I cared more about sustainability?". Every step the agent takes is shown live above the answer. The *Supervisor* tab shows its questions and proposals. |
-| **Account menu** (top right) | **My dishes**: saved for later, liked and cooked dishes. **Config** (administrator only). **How FoodRec works** (the complete guide). Sign out. |
+| **Account menu** (top right) | **My dishes**: saved for later, liked and cooked dishes. **Config** (administrator only). **How ReciReflect works** (the complete guide). Sign out. |
 | **Insights** | What your choices reveal compared with your saved goal, with the evidence behind every change; taste beliefs you can correct. |
 | **Activity** | The full event log and every supervisor decision. |
 | **Profile** | In tabs: **Preferences** (rules and tastes), **Values & diversity** (how much each value counts, saved as goal versions), **Knowledge** (the knowledge graph, your document library and a search tester) and **History** (profile versions and goal versions you can restore). |
@@ -189,7 +189,7 @@ ollama pull qwen3.5:2b-q4_K_M      # the supervisor model (about 2 GB)
 ollama pull nomic-embed-text       # embeddings for semantic search
 ```
 
-Restart FoodRec (`foodrec stop`, then `foodrec`). The status pill in the top bar shows the model once it
+Restart ReciReflect (`foodrec stop`, then `foodrec`). The status pill in the top bar shows the model once it
 is available. The default model fits a 4 GB GPU:
 
 | Model (Ollama) | Size | Fits 4 GB with 8k context | Use it for |
@@ -217,7 +217,7 @@ docker compose up -d neo4j         # knowledge graph (browser at http://localhos
 docker compose --profile qdrant up -d   # optional Qdrant server; then set the vector store to its URL
 ```
 
-| Missing component | What FoodRec does instead |
+| Missing component | What ReciReflect does instead |
 |---|---|
 | Ollama or the model | rule-based message parsing and template answers (traces say `source: rules`) |
 | embedding model | lexical (hashing) embeddings |
@@ -311,7 +311,7 @@ environment and are never written to the file. Full reference:
 | `foodrec config show` / `check` / `init` | show where every setting comes from; validate; write a fresh file |
 | `foodrec --config other.json …` | use another config file |
 
-`open`, `serve`, `status`, `stop` and `config open` accept `--host` and `--port`. Only one FoodRec runs per port: if it already runs,
+`open`, `serve`, `status`, `stop` and `config open` accept `--host` and `--port`. Only one ReciReflect runs per port: if it already runs,
 `foodrec` and `foodrec config open` just open the browser.
 
 ---
@@ -356,7 +356,7 @@ example on CSC cPouta): systemd service, nightly reset, HTTPS with Caddy, and up
 
 | Problem | Solution |
 |---|---|
-| `FoodRec needs an administrator password before it starts` | Run `foodrec admin password` (see step 3). |
+| `ReciReflect needs an administrator password before it starts` | Run `foodrec admin password` (see step 3). |
 | Forgot the administrator password | Run `foodrec admin password` again. |
 | `Port 8000 … is used by another program` | Stop that program, or use another port: `foodrec open --port 8001`. |
 | The page loads but parts are empty after an update | An old server is still running: `foodrec stop`, then `foodrec`. |

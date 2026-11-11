@@ -24,7 +24,7 @@ export function dishesView() {
       render();
     } catch (e) {
       clear(body, h("div.empty", h("h3", "Could not load your dishes"),
-        h("p", e.status === 404 ? "The running FoodRec server is older than this page. Restart it: foodrec stop, then foodrec."
+        h("p", e.status === 404 ? "The running ReciReflect server is older than this page. Restart it: foodrec stop, then foodrec."
           : e.message)));
     }
   }

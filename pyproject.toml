@@ -13,6 +13,11 @@ dependencies = [
     "neo4j>=5.20",
 ]
 
+[project.urls]
+Homepage = "https://github.com/AmirMohammad-Nouri/ReciReflect"
+Repository = "https://github.com/AmirMohammad-Nouri/ReciReflect"
+Issues = "https://github.com/AmirMohammad-Nouri/ReciReflect/issues"
+
 [project.optional-dependencies]
 dev = ["pytest>=8"]
 # Claude as the supervisor model (llm.provider = "anthropic")

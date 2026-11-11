@@ -1,6 +1,6 @@
 {
   "config_version": 1,
-  "$comment": "FoodRec configuration. Edit here or on the Config page (admin role). Precedence: built-in default < environment/.env < this file; null means 'use the environment or the default'. Secrets (NEO4J_PASSWORD, FOODREC_ADMIN_TOKEN) stay in the environment. See docs/configuration.md.",
+  "$comment": "ReciReflect configuration. Edit here or on the Config page (admin role). Precedence: built-in default < environment/.env < this file; null means 'use the environment or the default'. Secrets (NEO4J_PASSWORD, FOODREC_ADMIN_TOKEN) stay in the environment. See docs/configuration.md.",
   "llm": {
     "enabled": true,
     "provider": "ollama",

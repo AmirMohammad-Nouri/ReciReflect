@@ -55,13 +55,13 @@ def probe(host, port):
 
 
 def _port_taken(port, host):
-    print(f"Port {port} on {host} is used by another program, not FoodRec. Stop that program, or use "
+    print(f"Port {port} on {host} is used by another program, not ReciReflect. Stop that program, or use "
           f"another port: --port 8001 (or server.port in the config file).", file=sys.stderr)
     return 1
 
 
 def _launch(a, page, what):
-    """Open `page` in the browser. If FoodRec already runs on the configured host and port, only
+    """Open `page` in the browser. If ReciReflect already runs on the configured host and port, only
     open the browser (no second instance); if the port is free, start the app here (it keeps
     running in this terminal) and open the page when it is ready."""
     s, host, port, bhost = _where(a)
@@ -69,14 +69,14 @@ def _launch(a, page, what):
     state, info = probe(bhost, port)
     browser = not getattr(a, "no_browser", False)
     if state == "foodrec":
-        print(f"FoodRec is already running (pid {info.get('pid', '?')}). {what}: {url.split('#')[0]}")
+        print(f"ReciReflect is already running (pid {info.get('pid', '?')}). {what}: {url.split('#')[0]}")
         if browser:
             import webbrowser
             webbrowser.open(url)
         return 0
     if state == "other":
         return _port_taken(port, bhost)
-    print(f"Starting FoodRec on {bhost}:{port}; {what.lower()} opens when it is ready.\n  {url.split('#')[0]}\n"
+    print(f"Starting ReciReflect on {bhost}:{port}; {what.lower()} opens when it is ready.\n  {url.split('#')[0]}\n"
           "Stop it with Ctrl+C here, or `foodrec stop` from another terminal.")
     a.host, a.port = host, port
     # a restart after a config change must not open the browser again: restart as a plain server
@@ -98,11 +98,11 @@ def _open(a):
 
 
 def _serve_cmd(a):
-    """`foodrec serve`: the server only. A running FoodRec is reported, not duplicated."""
+    """`foodrec serve`: the server only. A running ReciReflect is reported, not duplicated."""
     s, host, port, bhost = _where(a)
     state, info = probe(bhost, port)
     if state == "foodrec":
-        print(f"FoodRec is already running on {bhost}:{port} (pid {info.get('pid', '?')}). "
+        print(f"ReciReflect is already running on {bhost}:{port} (pid {info.get('pid', '?')}). "
               "Use `foodrec stop` first to start it again.")
         return 0
     if state == "other":
@@ -123,7 +123,7 @@ def _status(a):
 
 def _listening_pid(port):
     """Linux: the pid of the process listening on a TCP port, from /proc (None elsewhere).
-    Used for servers started by an older FoodRec version that does not report its pid."""
+    Used for servers started by an older ReciReflect version that does not report its pid."""
     inodes = set()
     for table in ("/proc/net/tcp", "/proc/net/tcp6"):
         try:
@@ -164,20 +164,20 @@ def _stop(a):
     s, host, port, bhost = _where(a)
     state, info = probe(bhost, port)
     if state != "foodrec":
-        print(f"FoodRec is not running on {bhost}:{port}.")
+        print(f"ReciReflect is not running on {bhost}:{port}.")
         return 0 if state == "free" else 1
     pid = info.get("pid")
-    if not pid:  # an older FoodRec that does not report its pid
+    if not pid:  # an older ReciReflect that does not report its pid
         pid = _listening_pid(port)
         if not pid or not _is_foodrec_process(pid):
-            print(f"FoodRec answers on {bhost}:{port}, but its process could not be found. Stop it with Ctrl+C "
+            print(f"ReciReflect answers on {bhost}:{port}, but its process could not be found. Stop it with Ctrl+C "
                   f"where it runs, or: fuser -k {port}/tcp")
             return 1
     pid = int(pid)
     try:
         os.kill(pid, signal.SIGTERM)
     except ProcessLookupError:
-        print(f"FoodRec answers on {bhost}:{port} but process {pid} is not on this computer.")
+        print(f"ReciReflect answers on {bhost}:{port} but process {pid} is not on this computer.")
         return 1
     except PermissionError:
         print(f"Not allowed to stop process {pid} (started by another user).")
@@ -185,7 +185,7 @@ def _stop(a):
     for _ in range(50):
         time.sleep(0.2)
         if probe(bhost, port)[0] == "free":
-            print(f"Stopped FoodRec (pid {pid}).")
+            print(f"Stopped ReciReflect (pid {pid}).")
             return 0
     print(f"Sent the stop signal to pid {pid}, but port {port} is still in use.")
     return 1
@@ -346,7 +346,7 @@ def _users(a):
 
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(prog="foodrec", description="FoodRec: run the app, scenarios, exports and config.")
+    ap = argparse.ArgumentParser(prog="foodrec", description="ReciReflect: run the app, scenarios, exports and config.")
     ap.add_argument("--config", help="config file (default foodrec.config.json; 'none' for built-in defaults)")
     sub = ap.add_subparsers(dest="command")
 

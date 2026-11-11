@@ -1,5 +1,5 @@
 {
-  "$comment": "The public FoodRec demo: same code, this config. Visitors choose a user or an admin view; the admin view has Monitor with sample data and a read-only Config page, and nothing can be administered. Used by foodrec-demo.service (see docs/deployment.md).",
+  "$comment": "The public ReciReflect demo: same code, this config. Visitors choose a user or an admin view; the admin view has Monitor with sample data and a read-only Config page, and nothing can be administered. Used by foodrec-demo.service (see docs/deployment.md).",
   "config_version": 1,
   "server": {"mode": "demo", "host": "127.0.0.1", "port": 8000, "auto_reload": false},
   "dataset": {"data_dir": "data/demo/runtime"},
@@ -8,7 +8,7 @@
   "ranking": {"discovery_slots": 1, "show_similarity_score": true},
   "cycle": {"enabled": true, "meals": "breakfast,lunch,dinner", "recommendations": 5, "days": 3},
   "study": {
-    "name": "FoodRec demo",
+    "name": "ReciReflect demo",
     "description": "A public demo. Data is reset regularly.",
     "population": {"size": 6, "prefix": "p", "digits": 3, "roles": {"full": 50, "baseline": 50},
                    "shuffle": true, "seed": 7, "access": "link"},
