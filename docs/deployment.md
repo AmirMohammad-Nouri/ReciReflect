@@ -74,7 +74,7 @@ sudo apt update && sudo apt install -y python3-venv git caddy
 sudo useradd --system --create-home --home-dir /opt/foodrec foodrec
 sudo -u foodrec git clone https://github.com/<owner>/ReciReflect.git /opt/foodrec
 cd /opt/foodrec
-sudo -u foodrec git checkout v0.5.0                    # a release tag: the demo runs a tested version
+sudo -u foodrec git checkout v0.8.0                    # a release tag: the demo runs a tested version
 sudo -u foodrec python3 -m venv venv
 sudo -u foodrec venv/bin/pip install -e .
 ```
@@ -127,7 +127,7 @@ The Config page stays read-only, with two exceptions that only affect that visit
 
 ```bash
 cd /opt/foodrec
-sudo -u foodrec git fetch --tags && sudo -u foodrec git checkout v0.6.0
+sudo -u foodrec git fetch --tags && sudo -u foodrec git checkout v0.8.0
 sudo -u foodrec venv/bin/pip install -e .
 sudo systemctl restart foodrec-demo
 ```

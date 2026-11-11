@@ -2,7 +2,7 @@
 
 from . import model_spec as _model_spec
 
-__version__ = "0.4.0"
+__version__ = "0.8.0"
 
 # The user weighs the value criteria (by default healthiness, sustainability and convenience;
 # configurable in the "criteria" section of foodrec.config.json, see model_spec.py). Ranking
